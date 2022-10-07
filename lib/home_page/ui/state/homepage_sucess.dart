@@ -10,8 +10,10 @@ import '../../../hive/hive.dart';
 import '../../../utils/Colors/colors.dart';
 import '../../response/homepage_response.dart';
 import '../../response/homepage_test_model.dart';
+import '../../testModel/Flowerslist.dart';
 import '../screens/home_page_list.dart';
 import '../widget/Carousel_slider_widget/carousel_image_slider.dart';
+import '../widget/Flowers.dart';
 import '../widget/images_details/category_details.dart';
 import '../widget/Listview_gridview/destination_with_places_list.dart';
 import '../widget/Listview_gridview/gridView_images_details_homepage.dart';
@@ -60,7 +62,7 @@ class HomePageSuccess extends States {
                 );
               },
               icon: ImageIcon(
-                AssetImage(ImageAsset.user.toString()),
+                AssetImage("ImageAsset.user.toString()"),
                 color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
               )),
         ),
