@@ -1,20 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 import '../../../abstracts/states/state.dart';
 import '../../../hive/hive.dart';
 import '../../../utils/Colors/colors.dart';
-import '../../../utils/images/images.dart';
 import '../../state_manager/homepage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../widget/Google_Map/google_maps.dart';
-import '../widget/order_card_widget.dart';
-
 @injectable
 class HomePage extends StatefulWidget {
   final HomePageCubit cubit;
@@ -68,227 +63,39 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Image.asset('assets/images/yallaJeyeLogo.png'),
-        leadingWidth: 150,
-        backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: true,
-        leading: InkWell(
-          onTap: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.black26,
-                      ),
-                      height: 6,
-                      width: 40,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 17.0),
-                          child: Text(
-                            "Where should we deliver to?",
-                            style: GoogleFonts.poppins(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 26,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    LocationMap(),
-                              ),
-                            ).then((value) async {
-                              print("Current Loc = ${currentLocation}");
-
-                              value as LatLng;
-                              List<Placemark> newPlace = await GeocodingPlatform
-                                  .instance
-                                  .placemarkFromCoordinates(
-                                      value.latitude, value.longitude,
-                                      localeIdentifier: "en");
-
-                              // print(newPlace[0].locality  + newPlace[0].subLocality +newPlace[0].thoroughfare );
-                              currentLocation = newPlace[0].locality!;
-                              widget.locationHelper
-                                  .setLocation(currentLocation);
-                              // +' '+newPlace[0].thoroughfare!;
-                              print("Current Loc = ${currentLocation}");
-                            });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 17.0),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.my_location,
-                                  color: redColor,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Deliver to my current location',
-                                  style: GoogleFonts.poppins(
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 17.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.add,
-                                color: redColor,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          LocationMap(),
-                                    ),
-                                  ).then((value) async {
-                                    print("Current Loc = ${currentLocation}");
-
-                                    value as LatLng;
-                                    List<Placemark> newPlace =
-                                        await GeocodingPlatform.instance
-                                            .placemarkFromCoordinates(
-                                                value.latitude, value.longitude,
-                                                localeIdentifier: "en");
-
-                                    // print(newPlace[0].locality  + newPlace[0].subLocality +newPlace[0].thoroughfare );
-                                    currentLocation = newPlace[0].locality!;
-                                    // +' '+newPlace[0].thoroughfare!;
-                                    print("Current Loc = ${currentLocation}");
-                                  });
-                                },
-                                child: Text(
-                                  'Deliver somewhere else...',
-                                  style: GoogleFonts.poppins(
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.26,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.only(
-                              left: 120, right: 120, top: 16, bottom: 16),
-                          backgroundColor: redColor,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(13),
-                          )),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          AddressRoutes.Createaddress,
-                        );
-                      },
-                      child: Text(
-                        "Add new address",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ),
-                  ],
-                );
+        backgroundColor:
+        ThemeHelper().getisDark() ? Colors.black : Colors.white,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: IconButton(
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => Settings()),
+                // );
               },
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Deliver to',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          '${widget.locationHelper.getLocation()}',
-                          style: GoogleFonts.poppins(
-                            fontStyle: FontStyle.normal,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: redColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_down_outlined,
-                      color: redColor,
-                      size: 15,
-                    )
-                  ],
-                )
-              ],
-            ),
+              icon: ImageIcon(
+                AssetImage("ImageAsset.user.toString()"),
+                color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
+              )),
+        ),
+        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 0),
+          child: Image.asset(
+            "ImageAsset.logo2",
+            fit: BoxFit.contain,
+            height: 65,
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: Icon(
-              CupertinoIcons.search,
-              color: Colors.black,
-              size: 35,
-            ),
-          )
+          IconButton(
+              onPressed: () => null,
+              icon: ImageIcon(
+                AssetImage("ImageAsset.search.toString()"),
+                color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
+              ))
         ],
       ),
       body: BlocBuilder<HomePageCubit, States>(

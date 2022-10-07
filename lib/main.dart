@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cater_me_bloc/home_page/ui/screens/home_page_list.dart';
 import 'package:cater_me_bloc/utils/logger/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,8 @@ import 'package:injectable/injectable.dart';
 import 'abstracts/module/rout_module.dart';
 import 'di/di_config.dart';
 import 'hive/hive.dart';
+import 'home_page/homepage_module.dart';
+import 'home_page/homepage_route.dart';
 
 
 
@@ -40,11 +43,12 @@ void main() async {
 @injectable
 class MyApp extends StatefulWidget {
   // final NavigatorModule _navigatorModule;
+  final HomePageModule _homePageModule;
 
 
   MyApp(
       // this._navigatorModule,
-
+      this._homePageModule,
       );
 
   @override
@@ -78,8 +82,8 @@ class _MyAppState extends State<MyApp> {
 
       title: 'Yalla jeye',
       // routes: fullRoutesList,
-      // initialRoute: NavRoutes.nav_rout,
-      home:Container(),
+      initialRoute: HomePageRoutes.homePage,
+      // home:HomePage(),
     );
   }
 

@@ -1,6 +1,4 @@
-
 import 'package:injectable/injectable.dart';
-
 import '../../abstracts/WebUrl.dart';
 import '../../abstracts/model/WebServiceResponse.dart';
 import '../../module_auth/service/auth_service.dart';
