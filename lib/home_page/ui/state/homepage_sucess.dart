@@ -43,6 +43,7 @@ class HomePageSuccess extends States {
     // );
 
     return Scaffold(
+
       backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
