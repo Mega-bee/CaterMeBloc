@@ -69,8 +69,8 @@ class _MyAppState extends State<MyApp> {
       ) {
     return MaterialApp(
       theme: ThemeData(
-        // primaryColor: redColor,
-        // primarySwatch: redColor,
+        // primaryColor: PrimaryColor,
+        // primarySwatch: PrimaryColor,
         fontFamily: 'Roboto',
       ),
 
@@ -83,7 +83,6 @@ class _MyAppState extends State<MyApp> {
       title: 'Yalla jeye',
       // routes: fullRoutesList,
       initialRoute: HomePageRoutes.homePage,
-      // home:HomePage(),
     );
   }
 

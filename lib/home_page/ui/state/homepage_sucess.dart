@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cater_me_bloc/home_page/ui/widgets/Listview_gridview/destination_with_places_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,17 +14,15 @@ import '../../response/testModel/homepage_test_model.dart';
 import '../screens/home_page_list.dart';
 import '../widget/Addons.dart';
 import '../widget/CaroselSlider.dart';
-import '../widget/Carousel_slider_widget/carousel_image_slider.dart';
 import '../widget/Flowers.dart';
 import '../widget/Menu.dart';
 import '../widget/gridView_images_details_homepage.dart';
 import '../widget/images_details/category_details.dart';
-import '../widget/Listview_gridview/destination_with_places_list.dart';
-import '../widget/Listview_gridview/gridView_images_details_homepage.dart';
 import '../widget/images_details/homepage_ads_details.dart';
 import '../widget/images_details/images_details.dart';
 import '../widget/view_all_categories.dart';
-
+import '../widgets/Carousel_slider_widget/carousel_image_slider.dart';
+import '../widgets/Listview_gridview/gridView_images_details_homepage.dart';
 class HomePageSuccess extends States {
   final HomePageModel homepage;
   HomePageState homepageState;
@@ -34,21 +33,21 @@ class HomePageSuccess extends States {
   int _currentIndex = 0;
 
   ScrollController? _controller = ScrollController();
-  List<Places> place = [];
+  List<Packages> packages = [];
 
   @override
   Widget getUI(BuildContext context) {
     ///cutsom cache image manager
-    //  final customCacheManager = CacheManager(
-    //   Config(
-    //     'customCacheKey',
-    //     stalePeriod: Duration(days: 15),
-    //     maxNrOfCacheObjects: 100,
-    //   ),
-    // );
+     final customCacheManager = CacheManager(
+      Config(
+        'customCacheKey',
+        stalePeriod: Duration(days: 15),
+        maxNrOfCacheObjects: 100,
+      ),
+    );
 
     return RefreshIndicator(
-          color: redColor,
+          color: PrimaryColor,
           onRefresh: () async {
             homepageState.getHome();
           },
@@ -61,6 +60,7 @@ class HomePageSuccess extends States {
                   padding: const EdgeInsets.all(10.0),
                   child: CarouselSlider.builder(
                       options: CarouselOptions(
+
                           viewportFraction: 1,
                           height: 250,
                           autoPlay: true,
@@ -70,7 +70,7 @@ class HomePageSuccess extends States {
                             _currentIndex = index;
                             homepageState.refresh();
                           }),
-                      itemCount: homepage.events!.services!.length,
+                      itemCount: homepage.ads.length,
                       itemBuilder: (BuildContext context, int itemIndex,
                           int pageViewIndex) =>
                           CarouselImageSlider(
@@ -119,7 +119,7 @@ class HomePageSuccess extends States {
                       ),
                       controller: _controller,
                       scrollDirection: Axis.horizontal,
-                      itemCount: homepage.destinations!.length,
+                      itemCount: homepage.packages.items.length,
                       itemBuilder: (context, index) {
                         return GridViewDetails(
                           homepage: homepage,
@@ -134,9 +134,9 @@ class HomePageSuccess extends States {
                     ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: homepage.destinationWithPlaces!.length,
+                        itemCount: homepage.addons.length,
                         itemBuilder: (context, index) {
-                          final model = homepage.destinationWithPlaces![index];
+                          final model = homepage.addons[index];
                           return DestinationWithPlacesList(
                             homepage: homepage,
                             model: model,
@@ -285,7 +285,7 @@ class HomePageSuccess extends States {
         //                       style: TextStyle(fontSize: 11),
         //                     ),
         //                     Text(
-        //                       'Date,Places,guests...',
+        //                       'Date,packagess,guests...',
         //                       style: TextStyle(fontSize: 11),
         //                     )
         //                   ],

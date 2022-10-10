@@ -25,7 +25,7 @@ class _CarouselImageSliderState extends State<CarouselImageSlider> {
               // maxHeightDiskCache: 100,
               key: UniqueKey(),
               imageUrl: widget.homepage
-                  .events!.services![widget.itemIndex].imageUrl
+                  .ads[widget.itemIndex].image
                   .toString(),
               imageBuilder: (context, imageProvider) =>
                   Container(

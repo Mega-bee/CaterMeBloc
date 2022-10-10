@@ -7,15 +7,16 @@ import 'package:injectable/injectable.dart';
 import '../../../abstracts/states/state.dart';
 import '../../../hive/hive.dart';
 import '../../../utils/Colors/colors.dart';
+import '../../../utils/images/images.dart';
 import '../../state_manager/homepage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../widget/Google_Map/google_maps.dart';
 @injectable
 class HomePage extends StatefulWidget {
   final HomePageCubit cubit;
-  final AuthPrefsHelper locationHelper;
+  // final AuthPrefsHelper locationHelper;
 
-  const HomePage(this.cubit, this.locationHelper);
+  const HomePage(this.cubit);
 
   @override
   State<HomePage> createState() => HomePageState();
@@ -23,12 +24,12 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
-  void initState() {
-    currentLocation;
-    widget.cubit.getHomePage(this);
-    controller = BottomSheet.createAnimationController(this);
-    controller.duration = Duration(milliseconds: 500);
-  }
+  // void initState() {
+  //   currentLocation;
+  //   widget.cubit.getHomePage(this);
+  //   controller = BottomSheet.createAnimationController(this);
+  //   controller.duration = Duration(milliseconds: 500);
+  // }
 
   getHome() {
     widget.cubit.getHomePage(this);
@@ -76,7 +77,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 // );
               },
               icon: ImageIcon(
-                AssetImage("ImageAsset.user.toString()"),
+                AssetImage(ImageAsset.user.toString()),
                 color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
               )),
         ),
@@ -84,7 +85,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
         title: Padding(
           padding: const EdgeInsets.only(top: 0),
           child: Image.asset(
-            "ImageAsset.logo2",
+            ImageAsset.logo2,
             fit: BoxFit.contain,
             height: 65,
           ),
@@ -93,7 +94,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
           IconButton(
               onPressed: () => null,
               icon: ImageIcon(
-                AssetImage("ImageAsset.search.toString()"),
+                AssetImage(ImageAsset.search.toString()),
                 color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
               ))
         ],

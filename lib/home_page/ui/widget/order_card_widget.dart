@@ -71,12 +71,12 @@
 //                     ),
 //                     side: BorderSide(
 //                         width: 1.0,
-//                         color: redColor),
+//                         color: PrimaryColor),
 //                   ),
 //                   child: Text(
 //                     'Select',
 //                     style: TextStyle(
-//                         color: redColor),
+//                         color: PrimaryColor),
 //                   ),
 //                 ),
 //               ],
@@ -214,7 +214,7 @@
 //                             dragStartBehavior: DragStartBehavior
 //                                 .down,
 //                             activeColor:
-//                             redColor,
+//                             PrimaryColor,
 //                             value:
 //                             isChecked,
 //                             onChanged: (value) =>
@@ -230,7 +230,7 @@
 //                             dragStartBehavior: DragStartBehavior
 //                                 .down,
 //                             activeColor:
-//                             redColor,
+//                             PrimaryColor,
 //                             value:
 //                             isCheck,
 //                             onChanged: (value) =>
@@ -247,7 +247,7 @@
 //                     //         dragStartBehavior:
 //                     //         DragStartBehavior
 //                     //             .down,
-//                     //         activeColor: redColor,
+//                     //         activeColor: PrimaryColor,
 //                     //         value: true,
 //                     //         onChanged: (value) =>
 //                     //             setState(() {

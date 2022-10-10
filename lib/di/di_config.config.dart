@@ -50,10 +50,7 @@ _i1.GetIt $initGetIt(
       ));
   gh.factory<_i10.HomePageCubit>(
       () => _i10.HomePageCubit(get<_i9.HomePageRepository>()));
-  gh.factory<_i11.HomePage>(() => _i11.HomePage(
-        get<_i10.HomePageCubit>(),
-        get<_i3.AuthPrefsHelper>(),
-      ));
+  gh.factory<_i11.HomePage>(() => _i11.HomePage(get<_i10.HomePageCubit>()));
   gh.factory<_i12.HomePageModule>(
       () => _i12.HomePageModule(get<_i11.HomePage>()));
   gh.factory<_i13.MyApp>(() => _i13.MyApp(get<_i12.HomePageModule>()));

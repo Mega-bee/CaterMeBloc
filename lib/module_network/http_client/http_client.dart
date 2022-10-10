@@ -6,14 +6,11 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../../abstracts/model/WebServiceResponse.dart';
 import '../../utils/logger/logger.dart';
-
 @injectable
 class ApiClient {
   final Logger _logger;
   final String tag = 'ApiClient';
-
 //  final performanceInterceptor = DioFirebasePerformanceInterceptor();
-
   ApiClient(this._logger);
 
   Future<WebServiceResponse?> get(

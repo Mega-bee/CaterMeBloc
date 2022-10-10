@@ -60,7 +60,7 @@ class _DestinationWithPlacesListState extends State<DestinationWithPlacesList> {
                 },
                 child: Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: redColor,
+                  color: PrimaryColor,
                 ),
               ),
             ],

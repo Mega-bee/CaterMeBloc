@@ -127,7 +127,7 @@ class LocationMapState extends State<LocationMap> {
             },
             icon: Icon(Icons.arrow_back),
           ),
-          backgroundColor: redColor,
+          backgroundColor: PrimaryColor,
         ),
         body: Stack(
           children: <Widget>[
@@ -162,7 +162,7 @@ class LocationMapState extends State<LocationMap> {
                   FloatingActionButton(
                     onPressed: () => _onMapTypeButtonPressed(),
                     materialTapTargetSize: MaterialTapTargetSize.padded,
-                    backgroundColor: redColor,
+                    backgroundColor: PrimaryColor,
                     child: const Icon(Icons.map, size: 30.0),
                   ),
                   SizedBox(
@@ -171,7 +171,7 @@ class LocationMapState extends State<LocationMap> {
                   // FloatingActionButton(
                   //   onPressed: null,
                   //   materialTapTargetSize: MaterialTapTargetSize.padded,
-                  //   backgroundColor: redColor,
+                  //   backgroundColor: PrimaryColor,
                   //   child: const Icon(Icons.add_location, size: 30.0),
                   // ),
                   // SizedBox(
@@ -208,13 +208,13 @@ class LocationMapState extends State<LocationMap> {
             // child: Icon(
             //   Icons.dot,
             //   size: 20,
-            //   color: redColor,
+            //   color: PrimaryColor,
             // ))
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: redColor,
+          backgroundColor: PrimaryColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
               side: BorderSide(

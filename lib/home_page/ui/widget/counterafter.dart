@@ -43,7 +43,6 @@ class _counterafterState extends State<counterafter> {
               Icon(FontAwesomeIcons.minus,size: 15,color: PrimaryColor,)),
           Text(count.toString()),
           IconButton(onPressed: (){
-
               count++;
             setState(() {
 

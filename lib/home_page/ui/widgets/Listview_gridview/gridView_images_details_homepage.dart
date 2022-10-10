@@ -16,7 +16,6 @@ class GridViewDetails extends StatefulWidget {
 
 class _GridViewDetailsState extends State<GridViewDetails> {
   // ListCart cart = ListCart();
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -54,7 +53,7 @@ class _GridViewDetailsState extends State<GridViewDetails> {
                 // cacheManager: customCacheManager,
                 // maxHeightDiskCache: 100,
                 key: UniqueKey(),
-                imageUrl: widget.homepage.destinations![widget.index].image
+                imageUrl: widget.homepage.packages.items[widget.index].image
                     .toString(),
                 fit: BoxFit.cover,
                 imageBuilder: (context, imageProvider) => Container(

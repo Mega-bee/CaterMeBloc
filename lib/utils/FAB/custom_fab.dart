@@ -90,7 +90,7 @@
 //                           children: [
 //                             Icon(
 //                               Icons.calendar_month,
-//                               color: redColor,
+//                               color: Primary,
 //                             ),
 //                             SizedBox(width: 15),
 //                             Padding(
@@ -105,7 +105,7 @@
 //                                     "What's your order?",
 //                                     style: TextStyle(
 //                                       fontSize: 14,
-//                                       color: redColor,
+//                                       color: PrimaryColor,
 //                                     ),
 //                                   ),
 //                                   SizedBox(
@@ -115,7 +115,7 @@
 //                                     "What do you want to order?",
 //                                     style: TextStyle(
 //                                       fontSize: 10,
-//                                       color: redColor,
+//                                       color: PrimaryColor,
 //                                     ),
 //                                   )
 //                                 ],
@@ -126,7 +126,7 @@
 //                         SvgPicture.asset(
 //                           ImageAsset.cancel_Icon,
 //                           height: 30,
-//                           color: redColor,
+//                           color: PrimaryColor,
 //                         )
 //                       ],
 //                     ),
@@ -173,11 +173,11 @@
 //                                   shape: RoundedRectangleBorder(
 //                                     borderRadius: BorderRadius.circular(5),
 //                                   ),
-//                                   side: BorderSide(width: 1.0, color: redColor),
+//                                   side: BorderSide(width: 1.0, color: PrimaryColor),
 //                                 ),
 //                                 child: Text(
 //                                   'Select',
-//                                   style: TextStyle(color: redColor),
+//                                   style: TextStyle(color: PrimaryColor),
 //                                 ),
 //                               ),
 //                             ],
@@ -301,7 +301,7 @@
 //                                                       dragStartBehavior:
 //                                                           DragStartBehavior
 //                                                               .down,
-//                                                       activeColor: redColor,
+//                                                       activeColor: PrimaryColor,
 //                                                       value: widget
 //                                                           .creatingCartList![
 //                                                               index]
@@ -323,7 +323,7 @@
 //                                                       dragStartBehavior:
 //                                                           DragStartBehavior
 //                                                               .down,
-//                                                       activeColor: redColor,
+//                                                       activeColor: PrimaryColor,
 //                                                       value: widget
 //                                                           .creatingCartList![
 //                                                               index]
@@ -401,7 +401,7 @@
 //                               ),
 //                               MaterialButton(
 //                                 onPressed: () {},
-//                                 color: redColor,
+//                                 color: PrimaryColor,
 //                                 elevation: 0,
 //                                 padding: EdgeInsets.only(
 //                                     left: 75, right: 75, top: 13, bottom: 13),
