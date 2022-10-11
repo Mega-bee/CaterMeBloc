@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cater_me_bloc/home_page/ui/screens/home_page_list.dart';
 import 'package:cater_me_bloc/utils/logger/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,9 +9,6 @@ import 'di/di_config.dart';
 import 'hive/hive.dart';
 import 'home_page/homepage_module.dart';
 import 'home_page/homepage_route.dart';
-
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,11 +41,9 @@ class MyApp extends StatefulWidget {
   // final NavigatorModule _navigatorModule;
   final HomePageModule _homePageModule;
 
-
   MyApp(
-      // this._navigatorModule,
-      this._homePageModule,
-      );
+    this._homePageModule,
+  );
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -65,8 +59,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getConfiguredApp(
-      Map<String, WidgetBuilder> fullRoutesList,
-      ) {
+    Map<String, WidgetBuilder> fullRoutesList,
+  ) {
     return MaterialApp(
       theme: ThemeData(
         // primaryColor: PrimaryColor,
@@ -80,10 +74,9 @@ class _MyAppState extends State<MyApp> {
         languageCode: "en",
       ),
 
-      title: 'Yalla jeye',
-      // routes: fullRoutesList,
+      title: 'CaterMe',
+      routes: fullRoutesList,
       initialRoute: HomePageRoutes.homePage,
     );
   }
-
 }

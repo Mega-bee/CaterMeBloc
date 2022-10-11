@@ -19,7 +19,6 @@ class HomePageModel {
     orderSettings = OrderSettings.fromJson(json['orderSettings']);
     notificationCount = json['notificationCount'];
   }
-
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['ads'] = ads.map((e)=>e.toJson()).toList();
@@ -30,7 +29,6 @@ class HomePageModel {
     return _data;
   }
 }
-
 class Ads {
   Ads({
     required this.id,
@@ -83,7 +81,9 @@ class Packages {
 
 class Items {
   Items({
+    // required this.count,
     required this.id,
+    required this.selected,
     required this.image,
     required this.imageAR,
     required this.title,
@@ -101,6 +101,8 @@ class Items {
     required this.itemDetails,
   });
   late final int id;
+  // int? count;
+  late final bool selected;
   late final String image;
   late final String imageAR;
   late final String title;

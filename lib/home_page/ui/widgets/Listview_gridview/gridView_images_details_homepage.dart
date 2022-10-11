@@ -44,10 +44,11 @@ class _GridViewDetailsState extends State<GridViewDetails> {
         // );
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(20.0),
         child: Stack(
           children: [
             Card(
+              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0)),
               elevation: 1,
               child: CachedNetworkImage(
                 // cacheManager: customCacheManager,
@@ -55,7 +56,7 @@ class _GridViewDetailsState extends State<GridViewDetails> {
                 key: UniqueKey(),
                 imageUrl: widget.homepage.packages.items[widget.index].image
                     .toString(),
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),

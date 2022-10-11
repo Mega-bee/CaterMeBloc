@@ -1,11 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
-
 import '../../abstracts/states/error_state.dart';
 import '../../abstracts/states/loading_state.dart';
 import '../../abstracts/states/state.dart';
 import '../repository/homepage_repository.dart';
+import '../request/homepage_request.dart';
 import '../response/homepage_response.dart';
 import '../ui/screens/home_page_list.dart';
 import '../ui/state/homepage_sucess.dart';
@@ -31,21 +30,21 @@ class HomePageCubit extends Cubit<States> {
       if (value == null) {
         emit(ErrorState(
             errorMessage: 'Connection error',
-
             retry: () {
               getHomePage(state);
+              print(value?.code);
             }));
       } else if (value.code == 200) {
         HomePageModel homePageModel =
-            HomePageModel.fromJson(value.data.insideData);
+        HomePageModel.fromJson(value.data.insideData);
+        print(value.code);
         // List<HomePageModel> fol = [];
         // for (var item in value.data.insideData) {
         //   fol.add(HomePageModel.fromJson(item));
         // }
 
         emit(
-
-          HomePageSuccess(homepage: homePageModel,homepageState:state),
+          HomePageSuccess(homepage: homePageModel,homepageState: state),
         );
       }
     });

@@ -24,12 +24,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
-  // void initState() {
-  //   currentLocation;
-  //   widget.cubit.getHomePage(this);
-  //   controller = BottomSheet.createAnimationController(this);
-  //   controller.duration = Duration(milliseconds: 500);
-  // }
+  void initState() {
+    widget.cubit.getHomePage(this);
+    controller = BottomSheet.createAnimationController(this);
+    controller.duration = Duration(milliseconds: 500);
+  }
 
   getHome() {
     widget.cubit.getHomePage(this);
@@ -66,7 +65,8 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
       appBar: AppBar(
         elevation: 0,
         backgroundColor:
-        ThemeHelper().getisDark() ? Colors.black : Colors.white,
+        // ThemeHelper().getisDark() ? Colors.black :
+        Colors.white,
         leading: Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: IconButton(
@@ -78,7 +78,9 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
               },
               icon: ImageIcon(
                 AssetImage(ImageAsset.user.toString()),
-                color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
+                color:
+                // ThemeHelper().getisDark() ? Colors.white :
+                Colors.black,
               )),
         ),
         centerTitle: true,
@@ -95,13 +97,16 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
               onPressed: () => null,
               icon: ImageIcon(
                 AssetImage(ImageAsset.search.toString()),
-                color: ThemeHelper().getisDark() ? Colors.white : Colors.black,
+                color:
+                // ThemeHelper().getisDark() ? Colors.white :
+                Colors.black,
               ))
         ],
       ),
       body: BlocBuilder<HomePageCubit, States>(
         bloc: widget.cubit,
         builder: (context, state) {
+          print(state);
           return state.getUI(context);
         },
       ),

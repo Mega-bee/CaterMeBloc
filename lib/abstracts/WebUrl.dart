@@ -1,15 +1,13 @@
-
 class Urls {
   /*--------BASES-------------------*/
-  static const String DOMAIN = 'https://cater-me.azurewebsites.net/';
-
+  static const String DOMAIN = 'https://cater-me.azurewebsites.net/api/';
   static const String BASE_HOME_PAGE = DOMAIN + 'HomePage/';
   static const String BASE_NOTIFICATION = DOMAIN + 'Notifications/';
   static const String BASE_ORDER= DOMAIN + 'Orders/';
   static const String BASE_ADDRESSES= DOMAIN + 'Addresses/';
   static const String AUTH= DOMAIN + 'Accounts/';
 
-  static const GET_HOME_PAGE = BASE_HOME_PAGE + 'GetHomePage';
+  static const GET_HOME_PAGE = "https://cater-me.azurewebsites.net/api/HomePage/GetHomePage";
   static const GET_ORDERS = BASE_HOME_PAGE + 'PlaceOrder';
 
   /*-----------------------ADDRESSES--------------------------------------*/
@@ -23,8 +21,6 @@ class Urls {
   static const GET_ORDER = BASE_ORDER + 'GetOrders';
   static const GET_ORDERS_DETAILS = BASE_ORDER + 'GetOrder/';
   static const PLACE_ORDER = BASE_ORDER + 'PlaceOrder/';
-
-
 
   /*-----------------------AUTH----------------------------------*/
   static const LOG_IN = AUTH + 'Login';

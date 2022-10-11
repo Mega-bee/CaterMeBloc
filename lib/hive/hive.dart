@@ -14,11 +14,13 @@ class HiveSetUp {
 
   static Future<void> publicBoxes() async {
     await Hive.openBox('Authorization');
+    await Hive.openBox('OrderHomePage');
     await Hive.openBox('modelList');
-    // await Hive.openBox('themeColor');
+    await Hive.openBox('themeColor');
     // await Hive.openBox('GeneralData');
   }
 }
+
 @injectable
 // class ListCart {
 //   List<CartOrderModel> currentPlaceCart = [];
@@ -106,6 +108,22 @@ class HiveSetUp {
 //
 // }
 @injectable
+class OrderHomePage{
+  var box = Hive.box("OrderHomePage");
+  void setOrder(int ID, int count){
+    box.put("ID", ID);
+    box.put("count", count);
+  }
+  void getOrder(){
+    box.get("ID");
+    box.get("count");
+  }
+  void deleteOrder(int ID, int count){
+    box.delete("ID");
+    box.delete("count");
+  }
+}
+@injectable
 class AuthPrefsHelper {
   var box = Hive.box('Authorization');
 
@@ -134,12 +152,9 @@ class AuthPrefsHelper {
     box.put('cityname', cityName);
   }
 
-
   String? getLocation() {
     return box.get('cityname') ?? "Zahlee";
   }
-
-
 }
 
 // @injectable

@@ -26,12 +26,9 @@ import '../widgets/Listview_gridview/gridView_images_details_homepage.dart';
 class HomePageSuccess extends States {
   final HomePageModel homepage;
   HomePageState homepageState;
-
   HomePageSuccess({required this.homepage, required this.homepageState})
       : super(false);
-
   int _currentIndex = 0;
-
   ScrollController? _controller = ScrollController();
   List<Packages> packages = [];
 
@@ -68,17 +65,14 @@ class HomePageSuccess extends States {
                           enableInfiniteScroll: true,
                           onPageChanged: (index, reason) {
                             _currentIndex = index;
-                            homepageState.refresh();
-                          }),
+                            homepageState.refresh();}),
                       itemCount: homepage.ads.length,
                       itemBuilder: (BuildContext context, int itemIndex,
                           int pageViewIndex) =>
                           CarouselImageSlider(
                             homepage: homepage,
-                            itemIndex: itemIndex,
-                          )),
+                            itemIndex: itemIndex,)),
                 ),
-
                 // CarouselImageSlider(
                 //   homepage: null,
                 // ),
@@ -102,32 +96,59 @@ class HomePageSuccess extends States {
                 SizedBox(
                   height: 20,
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, left: 10),
-                  child: SizedBox(
-                    height: 300,
-                    width: double.infinity,
-                    child: GridView.builder(
-                      physics: BouncingScrollPhysics(),
-                      gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: (2 / 4),
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 0,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        "Menus",
+                        style: GoogleFonts.poppins(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      controller: _controller,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: homepage.packages.items.length,
-                      itemBuilder: (context, index) {
-                        return GridViewDetails(
-                          homepage: homepage,
-                          index: index,
-                        );
-                      },
                     ),
-                  ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 8.0),
+                    //   child: Text(
+                    //     "${widget.model.description}",
+                    //     style: GoogleFonts.poppins(
+                    //         fontStyle: FontStyle.normal,
+                    //         fontSize: 12,
+                    //         color: Colors.grey),
+                    //   ),
+                    // ),
+                    SizedBox(height: 34),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10, left: 10),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height*0.25,
+                        width: double.infinity,
+                        child: GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            childAspectRatio: (1 / 1.5),
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 0,
+                          ),
+                          controller: _controller,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: homepage.packages.items.length,
+                          itemBuilder: (context, index) {
+                            return GridViewDetails(
+                              homepage: homepage,
+                              index: index,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Column(
                   children: [
@@ -137,6 +158,7 @@ class HomePageSuccess extends States {
                         itemCount: homepage.addons.length,
                         itemBuilder: (context, index) {
                           final model = homepage.addons[index];
+                          print(homepage.addons);
                           return DestinationWithPlacesList(
                             homepage: homepage,
                             model: model,

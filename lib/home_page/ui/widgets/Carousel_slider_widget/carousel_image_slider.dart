@@ -16,6 +16,50 @@ class _CarouselImageSliderState extends State<CarouselImageSlider> {
   @override
   Widget build(BuildContext context) {
     return Center(
+      child: InkWell(
+        onTap: () => null,
+        child: SizedBox(
+          height: 500,
+          width: 400,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+
+              borderRadius: BorderRadius.circular(20),
+              child:            CachedNetworkImage(
+                // cacheManager: customCacheManager,
+                // maxHeightDiskCache: 100,
+                key: UniqueKey(),
+                imageUrl: widget.homepage
+                    .ads[widget.itemIndex].image
+                    .toString(),
+                imageBuilder: (context, imageProvider) =>
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                placeholder: (context, url) => Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: LoadingAnimationWidget.inkDrop(
+                      color: Theme.of(context).primaryColor,
+                      size: 20),
+                ),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.error),
+              ),
+
+            ),
+          ),
+        ),
+      ),
+    );
+
+      Center(
       child: Container(
         width: double.infinity,
         child: Stack(
