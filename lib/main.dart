@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'abstracts/module/rout_module.dart';
+import 'auth/auth_module.dart';
+import 'auth/auth_module_route.dart';
 import 'di/di_config.dart';
 import 'hive/hive.dart';
 import 'home_page/homepage_module.dart';
@@ -40,9 +42,10 @@ void main() async {
 class MyApp extends StatefulWidget {
   // final NavigatorModule _navigatorModule;
   final HomePageModule _homePageModule;
+  final LogInModule _logInModule;
 
   MyApp(
-    this._homePageModule,
+    this._homePageModule, this._logInModule,
   );
 
   @override
@@ -76,7 +79,7 @@ class _MyAppState extends State<MyApp> {
 
       title: 'CaterMe',
       routes: fullRoutesList,
-      initialRoute: HomePageRoutes.homePage,
+      initialRoute: AuthRoutes.login,
     );
   }
 }
